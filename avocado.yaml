@@ -1,0 +1,30 @@
+default_target: rzv2h-rdk
+supported_targets:
+  - rzv2h-rdk
+
+extensions:
+  avocado-bsp-rzv2h-rdk:
+    version: 2024.1.0
+    release: r0
+    summary: Board support for the Renesas RZ/V2H Robot RDK (WS125-V2HRDKREFZ)
+    description: Board support for the Renesas RZ/V2H Robotic Development Kit (WS125-V2HRDKREFZ)
+    license: Apache-2.0
+    url: https://github.com/avocadolinux/avocado-os
+    vendor: Avocado Linux <info@avocadolinux.org>
+
+    types:
+      - sysext
+      - confext
+
+    on_merge:
+      - udevadm control --reload
+      - udevadm trigger --type=subsystems --action=add --settle
+      - udevadm trigger --type=devices --action=add --settle
+
+    packages:
+      # Bring-up: ship every kernel module via the kernel-modules meta-package.
+      # Trim down to the lsmod set once the board boots cleanly.
+      kernel-modules: '*'
+
+sdk:
+  image: docker.io/avocadolinux/sdk:{{ env.AVOCADO_DISTRO_RELEASE }}-{{ env.AVOCADO_DISTRO_CHANNEL }}
