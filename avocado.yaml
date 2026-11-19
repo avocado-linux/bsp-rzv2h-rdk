@@ -4,7 +4,7 @@ supported_targets:
 
 extensions:
   avocado-bsp-rzv2h-rdk:
-    version: 2024.1.0
+    version: 0.1.0
     release: r0
     summary: Board support for the Renesas RZ/V2H Robot RDK (WS125-V2HRDKREFZ)
     description: Board support for the Renesas RZ/V2H Robotic Development Kit (WS125-V2HRDKREFZ)
@@ -27,4 +27,4 @@ extensions:
       kernel-modules: '*'
 
 sdk:
-  image: docker.io/avocadolinux/sdk:{{ env.AVOCADO_DISTRO_RELEASE }}-{{ env.AVOCADO_DISTRO_CHANNEL }}
+  image: docker.io/avocadolinux/sdk:{{ env.AVOCADO_DISTRO_RELEASE }}
